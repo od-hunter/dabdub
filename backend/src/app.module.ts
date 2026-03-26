@@ -31,6 +31,7 @@ import { VirtualAccountModule } from './virtual-account/virtual-account.module';
 import { AdminModule } from './admin/admin.module';
 import { EarningsModule } from './earnings/earnings.module';
 import { SmsModule } from './sms/sms.module';
+import { PasskeyModule } from './passkey/passkey.module';
 import { SecurityModule } from './security/security.module';
 import { TransactionModule } from './transactions/transactions.module';
 import { PushModule } from './push/push.module';
@@ -127,6 +128,8 @@ import { WithdrawalsModule } from './withdrawals/withdrawals.module';
     // 10. Earnings — yield dashboard, APY display, projections.
     EarningsModule,
 
+    // Passkey/WebAuthn authentication.
+    PasskeyModule,
     // 11. Transactions — activity history with cursor-based pagination.
     TransactionModule,
   ],
