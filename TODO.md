@@ -1,50 +1,32 @@
-# Merchant Settlement History Module - Implementation Plan
+# Support Module Implementation TODO
 
-## Status: ✅ In Progress
+## Plan Breakdown (Approved)
 
-### 1. [ ] Create backend/src/settlement/entities/settlement.entity.ts
+### Phase 1: Core Module Structure [ ]
 
-- TypeORM entity with all AC fields + indexes matching migration
+- [ ] Create `backend/src/support/support.module.ts`
+- [ ] Create entities: `support-ticket.entity.ts`, `ticket-message.entity.ts`
+- [ ] Create DTOs: `create-ticket.dto.ts`, `add-message.dto.ts`, `ticket-response.dto.ts`, `admin-ticket-query.dto.ts`, `update-ticket.dto.ts`
+- [ ] Create `support.controller.ts` (user endpoints)
+- [ ] Create `support-admin.controller.ts` (admin endpoints)
 
-### 2. [ ] Create DTOs in backend/src/settlement/dto/
+### Phase 2: Services & Logic [ ]
 
-- settlement-detail.dto.ts
-- settlements-query.dto.ts (pagination + filters)
-- summary.dto.ts
-- monthly-breakdown.dto.ts
+- [ ] Create `support.service.ts` (CRUD, priority logic, notifications)
+- [ ] Create `support.processor.ts` (BullMQ escalation cron)
+- [ ] Update `queue.constants.ts` - add 'support-jobs'
 
-### 3. [ ] Implement SettlementHistoryService
+### Phase 3: Integration & Migration [ ]
 
-- backend/src/settlement/settlement-history.service.ts
-- getMerchantSettlements(merchantId, query)
-- getSummary(merchantId)
-- getMonthlyBreakdown(merchantId)
+- [ ] Create migration for support tables
+- [ ] Update `app.module.ts` - import SupportModule
+- [ ] Run migration
 
-### 4. [ ] Create Controllers
+### Phase 4: Testing & Validation [ ]
 
-- backend/src/settlement/settlement.controller.ts
-- /merchant/settlements\*, /merchant/settlements/summary, /merchant/settlements/breakdown
-- /admin/settlements\*, /admin/settlements/pending
+- [ ] Create `support.service.spec.ts`
+- [ ] Test endpoints manually
+- [ ] Verify cron/escalation
+- [ ] Mark complete
 
-### 5. [ ] Create Module
-
-- backend/src/settlement/settlement.module.ts
-- Import TypeOrmModule.forFeature([Settlement]), dependencies
-
-### 6. [ ] Update app.module.ts
-
-- Add import SettlementModule
-
-### 7. [ ] Clean up starter files
-
-- Delete cron.ts, settlement.service.ts, settlement.worker.ts, settlement.entity.ts
-
-### 8. [ ] Add Unit Tests
-
-- settlement-history.service.spec.ts (AC test cases)
-
-### 9. [ ] Follow-up
-
-- Run migrations if needed
-- npm run test
-- Manual endpoint testing
+**Current Progress: Starting Phase 1**
